@@ -14,9 +14,6 @@ fn main() {
         process::exit(1);
     });
 
-    println!( "Seraching for {}", config.query );
-    println!( "In file  {}", config.filename );
-
     if let Err(e) = tinygrep::run(config) {
         println!("Application error: {}", e);
 
