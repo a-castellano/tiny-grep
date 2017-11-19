@@ -1,4 +1,4 @@
 [root]
-name = "tiny-grep"
+name = "tinygrep"
 version = "0.1.0"
 

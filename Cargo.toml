@@ -1,5 +1,5 @@
 [package]
-name = "tiny-grep"
+name = "tinygrep"
 version = "0.1.0"
 authors = ["Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>"]
 

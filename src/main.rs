@@ -1,34 +1,9 @@
+extern crate tinygrep;
+
 use std::env;
 use std::process;
-use std::fs::File;
-use std::io::prelude::*;
 
-
-struct Config {
-
-    query: String,
-    filename: String,
-
-}
-
-impl Config {
-
-    fn new( args: &[String] ) -> Result<Config, &'static str> {
-
-        if args.len() != 3 {
-            return Err( "This program only accepts 2 arguments" );
-        }
-
-        let query = args[1].clone();
-        let filename = args[2].clone();
-
-        Ok( Config { query, filename } )
-
-    }
-
-}
-
-
+use tinygrep::Config;
 
 fn main() {
 
@@ -42,11 +17,11 @@ fn main() {
     println!( "Seraching for {}", config.query );
     println!( "In file  {}", config.filename );
 
-    let mut f = File::open(config.filename).expect( "file not found" );
-    let mut contents = String::new();
-    f.read_to_string( &mut contents )
-        .expect("something went wrong reading the file");
+    if let Err(e) = tinygrep::run(config) {
+        println!("Application error: {}", e);
 
-    println!( "With text:\n{}", contents );
+        process::exit(1);
+
+    }
 
 }
